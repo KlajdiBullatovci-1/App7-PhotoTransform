@@ -70,11 +70,6 @@
   return (ratio===0)?1:ratio;
  }
 
- function drawImageIOSFix(ctx, img, sx, sy, sw, sh, dx, dy, dw, dh) {
-  var vertSquashRatio = detectVerticalSquash(img);
-  ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio);
- }
-
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
@@ -101,7 +96,6 @@
           /*This finally draws the image onto the first drawing canvas. The specific canvas is referred to by "context". This is established down in the HTML part of the file just under the first <canvas> tag. If we weren't worried about fixing an iPhone bug we would use context.drawImage(image, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, 600, 500) instead of drawImageIOSFix */
          context.drawImage(img, 0, 0);
       }
-      img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThQ1ICSCmHTsCYF0p9uMJpzxudExdFlsHUhg&usqp=CAU';
 
       function showBlue() {
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
